@@ -11,6 +11,21 @@
   font-size: 14px;
 }
 
+input[type="number"] {
+  -moz-appearance: textfield !important; /* Firefox */
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For certain versions of Safari and other WebKit-based browsers */
+input[type="number"] {
+  -webkit-appearance: none;
+}
+
 * {
   font-family: nunito !important;
 }

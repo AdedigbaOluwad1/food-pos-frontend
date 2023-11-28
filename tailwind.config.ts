@@ -10,11 +10,12 @@ const config: Config = {
     colors: {
       'primary': '#111729',
       'light': '#fff',
-      'grey': '#757575',
+      'grey': '#677489',
       'ash': '#ECECEC',
       'success': '#3ABF38',
       'light-70': '#F4F4F4',
-      'grey-text': '#3E3E3E'
+      'grey-text': '#3E3E3E',
+      'border-color': '#E3E8EF',
     },
     extend: {},
   },

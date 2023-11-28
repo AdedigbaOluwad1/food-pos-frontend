@@ -3,23 +3,45 @@ import Logo from '@/assets/Logo.png'
 import Image from 'next/image'
 import OrderItem from '@/components/order-item'
 import Ticket from '@/assets/ticket-discount.png'
+import Input from '@/components/input'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import PaymentMethod from '@/components/payment-method'
+import ModalComponent from '@/components/modal'
 
 function Invoice() {
+    
     const router = useRouter()
     const { id } = router.query
 
     const pay = () => {
-        axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/invoices/pay', {
+        axios.post(process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_BASE_URL! : process.env.NEXT_PUBLIC_API_BASE_URL! + '/invoices/pay', {
             id: id
         })
         .then(e => console.log(e.data))
         .catch(e => console.log(e))
     }
+
+    const submit = (e: any) => {
+        e.preventDefault()
+        console.log('submit')
+        
+    }
   return (
-    <div className="flex w-screen h-screen">
-      <div className="w-6/12 flex flex-col h-full bg-primary pl-8 pr-28 py-6" style={{
+    <div className="flex" style={{
+        minHeight: '100vh'
+    }}>
+        {/* <div 
+        data-te-modal-init
+        className="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+        id="leftTopModal"
+        tabIndex={-1}
+        aria-labelledby="leftTopModalLabel"
+        aria-hidden="true"
+    >
+      Hey
+    </div> */}
+      <div className="w-6/12 flex flex-col min-h-full bg-primary pl-8 pr-28 py-6" style={{
         backgroundImage: `url(${bgVector})`
       }}>
         <Image alt='logo' src={Logo} />
@@ -95,12 +117,52 @@ function Invoice() {
         </div>
       </div>
 
-      <div className='flex flex-col h-full w-6/12 items-center justify-center'>
-        <button onClick={pay} className='w-3/4 bg-primary h-12 font-semibold hover:opacity-95 transition-all' style={{
-            borderRadius: 12
-        }}>
-            Pay
-        </button>
+      <div className='flex flex-col min-h-full w-6/12 py-24 items-center justify-center'>
+        <form onSubmit={(e) => submit(e)} className='flex flex-col gap-6 w-3/5'>
+            <Input title='Email' type='email' placeholder='Enter your email' />
+            <Input title='Phone number' type='number' placeholder='Enter your phone number' />
+            <div className='flex flex-col gap-y-2 gap-x-3'>
+                <div className='flex justify-between items-center' style={{
+                    width: '100%'
+                }}>
+                    <p className='text-primary text-base font-bold'>
+                        Payment method
+                    </p>
+
+                    <button type='button' className='text-primary text-base font-bold border-0 border-primary' style={{
+                            borderBottom: '1px solid'
+                        }}
+                        data-te-toggle="modal"
+                        data-te-target="#leftTopModal"
+                        data-te-ripple-init
+                        data-te-ripple-color="light"
+                    >
+                        + Add new
+                    </button>
+                </div>
+
+                <div className='flex grow justify-between gap-y-2'>
+                   <PaymentMethod /> 
+                </div>
+                
+            </div>
+            <Input title='Card holder name' type='text' placeholder='Ex. Jane Cooper' />
+            <Input title='Billing address' type='text' placeholder='United States' />
+            <div className='flex gap-6'>
+                <Input title='Zip code' placeholder='Ex. 73923' type='text' />
+                <Input title='City' placeholder='Ex. New York' type='text' />
+            </div>
+            <div className='flex gap-3 mt-2 items-center'>
+                <input type='checkbox' className='accent-primary cursor-pointer' />
+                <p className='text-base font-medium' style={{
+                    color: '#677489'
+                }}>Billing address is same as shipping</p>
+            </div>
+            
+            <input onClick={(e) => submit(e)} type='submit' value={'Pay'} className='bg-primary h-12 cursor-pointer font-semibold hover:opacity-95 transition-all' style={{
+                borderRadius: 12
+            }} />
+        </form>
       </div>
     </div>
   )
