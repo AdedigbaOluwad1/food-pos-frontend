@@ -25,6 +25,7 @@ function Invoice() {
     const submit = (e: any) => {
         e.preventDefault()
         console.log('submit')
+        pay()
         
     }
   return (
