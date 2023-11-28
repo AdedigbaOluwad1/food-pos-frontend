@@ -8,9 +8,9 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import PaymentMethod from '@/components/payment-method'
 import ModalComponent from '@/components/modal'
+import React from 'react'
 
 function Invoice() {
-    
     const router = useRouter()
     const { id } = router.query
 
@@ -22,26 +22,16 @@ function Invoice() {
         .catch(e => console.log(e))
     }
 
-    const submit = (e: any) => {
+    const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log('submit')
         pay()
-        
     }
+
   return (
     <div className="flex" style={{
         minHeight: '100vh'
     }}>
-        {/* <div 
-        data-te-modal-init
-        className="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-        id="leftTopModal"
-        tabIndex={-1}
-        aria-labelledby="leftTopModalLabel"
-        aria-hidden="true"
-    >
-      Hey
-    </div> */}
       <div className="w-6/12 flex flex-col min-h-full bg-primary pl-8 pr-28 py-6" style={{
         backgroundImage: `url(${bgVector})`
       }}>
@@ -160,7 +150,7 @@ function Invoice() {
                 }}>Billing address is same as shipping</p>
             </div>
             
-            <input onClick={(e) => submit(e)} type='submit' value={'Pay'} className='bg-primary h-12 cursor-pointer font-semibold hover:opacity-95 transition-all' style={{
+            <input type='submit' value={'Pay'} className='bg-primary h-12 cursor-pointer font-semibold hover:opacity-95 transition-all' style={{
                 borderRadius: 12
             }} />
         </form>
