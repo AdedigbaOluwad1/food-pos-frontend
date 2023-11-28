@@ -15,7 +15,9 @@ function Invoice() {
     const { id } = router.query
 
     const pay = () => {
-        axios.post(process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_BASE_URL! : process.env.NEXT_PUBLIC_API_BASE_URL! + '/invoices/pay', {
+        axios.post(
+            // process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_BASE_URL! : process.env.NEXT_PUBLIC_API_BASE_URL! + 
+            'https://klusterthon.onrender.com/api/invoices/pay', {
             id: id
         })
         .then(e => console.log(e.data))
