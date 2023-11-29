@@ -15,6 +15,12 @@ input[type="number"] {
   -moz-appearance: textfield !important; /* Firefox */
 }
 
+.go3958317564{
+  justify-content: left !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
