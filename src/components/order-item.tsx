@@ -9,7 +9,8 @@ export default function OrderItem({ lastItem }: { lastItem: boolean }) {
         borderBottom: !lastItem ? '1px solid #28303F' : 0
     }}>
       <div className='w-20 h-20 bg-light flex items-center justify-center' style={{
-        borderRadius: 8
+        borderRadius: 8,
+        aspectRatio: '1/1'
       }}>
         <Image alt='product' src={Product} />
       </div>

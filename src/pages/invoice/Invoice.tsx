@@ -29,15 +29,15 @@ function Invoice() {
     }
 
   return (
-    <div className="flex" style={{
+    <div className="flex flex-col lg:flex-row" style={{
         minHeight: '100vh'
     }}>
-      <div className="w-6/12 flex flex-col min-h-full bg-primary pl-8 pr-28 py-6" style={{
+      <div className="lg:w-6/12 flex flex-col min-h-full bg-primary md:px-8 lg:pr-28 pt-6 pb-16 lg:pb-6 px-6" style={{
         backgroundImage: `url(${bgVector})`
       }}>
         <Image alt='logo' src={Logo} />
 
-        <div className='self-end flex flex-col mt-16 w-3/4 gap-6'>
+        <div className='self-center lg:self-end flex flex-col mt-16 w-full md:w-8/12 lg:w-11/12 gap-6 lg:max-w-lg'>
             <p className='text-2xl font-bold' style={{
                 fontFamily: 'nunito'
             }}>
@@ -108,8 +108,8 @@ function Invoice() {
         </div>
       </div>
 
-      <div className='flex flex-col min-h-full w-6/12 py-24 items-center justify-center'>
-        <form onSubmit={(e) => submit(e)} className='flex flex-col gap-6 w-3/5'>
+      <div className='flex flex-col min-h-full lg:w-6/12 py-24 md:px-8 px-6 items-center justify-center'>
+        <form onSubmit={(e) => submit(e)} className='flex flex-col gap-6 w-full md:w-8/12 lg:w-11/12 lg:max-w-lg'>
             <Input title='Email' type='email' placeholder='Enter your email' />
             <Input title='Phone number' type='number' placeholder='Enter your phone number' />
             <div className='flex flex-col gap-y-2 gap-x-3'>

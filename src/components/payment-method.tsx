@@ -6,7 +6,7 @@ import Visa from '@/assets/Visa.png'
 export default function PaymentMethod() {
   const [checkedState, setCheckedState] = useState(false)
   return (
-    <div onClick={() => setCheckedState((prev) => !prev)} className={`w-1/2 p-4 gap-4 flex justify-between cursor-pointer border-2 transition-all ${checkedState ? 'border-primary' : 'border-border-color'}`} style={{
+    <div onClick={() => setCheckedState((prev) => !prev)} className={`w-full md:w-1/2 p-4 gap-4 flex justify-between cursor-pointer border-2 transition-all ${checkedState ? 'border-primary' : 'border-border-color'}`} style={{
       height: '4.75rem',
       borderRadius: 12,
     }}>
