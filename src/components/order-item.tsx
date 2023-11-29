@@ -17,27 +17,30 @@ export default function OrderItem({ lastItem }: { lastItem: boolean }) {
 
       <div className='flex items-start'>
         <div className='flex gap-y-3 gap-x-10 flex-wrap'>
-            <p className='text-base' style={{
-                width: '100%',
-                fontWeight: 700
-            }}>
-                Nike Air Zoom Pegasus 39
-            </p>
+          <p className='text-sm md:text-base' style={{
+              width: '100%',
+              fontWeight: 700,
+              // overflow: 'hidden',
+              // whiteSpace: 'nowrap',
+              // textOverflow: 'ellipsis',
+          }}>
+              Nike Air Zoom Pegasus 39
+          </p>
 
-            <p className='text-base' style={{
-                fontWeight: 500
-            }}>
-                Size: XL
-            </p>
+          <p className='text-sm md:text-base' style={{
+              fontWeight: 500
+          }}>
+              Size: XL
+          </p>
 
-            <p className='text-base' style={{
-                fontWeight: 500
-            }}>
-                Color: Blue
-            </p>
+          <p className='text-sm md:text-base' style={{
+              fontWeight: 500
+          }}>
+              Color: Blue
+          </p>
         </div>
 
-        <p className='text-base' style={{
+        <p className='text-sm md:text-base' style={{
             fontWeight: 500
         }}>
             $28.00
