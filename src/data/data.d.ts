@@ -9,3 +9,9 @@ export interface state {
 export interface stateValue {
     sysLevel: 'sign-up' | 'login' | ''
 }
+
+export interface navLink {
+    name: string,
+    icon: string,
+    path: string
+}

@@ -17,7 +17,6 @@ export default function SignUp() {
   })
 
   async function signUp(){
-    console.log('function called')
     const res = axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/users', {
       email: formState.email,
       firstName: formState.firstName,

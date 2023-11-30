@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Input from '@/components/input'
 import { useSelector, useDispatch } from 'react-redux'
 import { stateValue } from '@/data/data'
 import { updateUserLevel } from '@/store/general-app-state'
+import axios from 'axios'
 
 export default function Login() {
     const state = useSelector(({ generalState }: { generalState: stateValue }) => generalState)
     const dispatch = useDispatch()
+    const [formState, setFormState] = useState({
+        email: '',
+        password: ''
+    })
 
     const updateState = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>, levelValue: 'sign-up' | 'login' | 'dashboard') => {
         e.preventDefault()
         dispatch(updateUserLevel(levelValue))
+
+        if(levelValue === 'login'){
+            const res = axios.post('')
+        }
     }
   return (
     <div className={`w-full ${state.sysLevel === 'login' ? 'flex' : 'hidden'} flex-col gap-3 transition-all`}>
@@ -22,13 +31,16 @@ export default function Login() {
         <form onSubmit={(e) => updateState(e, 'login')} className='w-full flex flex-col gap-3'>
             <Input 
                 required 
-                title='Email' 
+                emmitValue={(e: string) => setFormState((prevState) => ({...prevState, email: e}))}
+                title='Email'
                 placeholder='Enter your email address' 
                 type='email' 
             />
 
             <Input 
+                emmitValue={(e: string) => setFormState((prevState) => ({...prevState, password: e}))}
                 title='Password' 
+                required
                 placeholder='Enter your password' 
                 type='password' 
             />
@@ -43,7 +55,14 @@ export default function Login() {
                 </button>
             </div>
             
-            <input className='bg-primary w-full text-base h-12 mt-5 cursor-pointer' value={'Login'} type='submit' style={{ borderRadius: 12 }} />
+            <input 
+                className='bg-primary w-full text-base h-12 mt-5 cursor-pointer' 
+                value={'Login'} 
+                type='submit' 
+                style={{ 
+                    borderRadius: 12 
+                }} 
+            />
         </form>
     </div>
   )
