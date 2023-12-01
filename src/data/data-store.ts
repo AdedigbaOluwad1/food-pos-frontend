@@ -37,10 +37,10 @@ export const dummyUsers = [
         userName: 'Unique Feyi',
         email: 'good@gmail.com',
     },
-    {
-        userName: 'Klusterthon Hackathon',
-        email: 'klusterthon@gmail.com',
-    },
+    // {
+    //     userName: 'Klusterthon Hackathon',
+    //     email: 'klusterthon@gmail.com',
+    // },
 ]
 
 export const dummyInvoice = [

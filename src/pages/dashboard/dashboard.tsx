@@ -13,7 +13,7 @@ import useGetInvoice from '@/hooks/useGetInvoices'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProducts, updateInvoices } from '@/store/general-app-state'
 import useGetProducts from '@/hooks/useGetProducts'
-import { IGetInvoicesRes, IInvoiceObject, IProductObject, state } from '@/data/data'
+import { IInvoiceObject, IProductObject, state } from '@/data/data'
 
 // export async function getServerSideProps(){
 //   try {
@@ -164,77 +164,6 @@ export default function Dashboard() {
 
           <div className='flex flex-col gap-3' style={{ flex: '1 0 300px', }}>
             <h4 className='text-lg font-bold'>
-              Invoices
-            </h4>
-            <div className='bg-primary p-5' style={{ borderRadius: 12 }}>
-              <table>
-                <thead>
-                  <tr className='t-head-row'>
-                    <td width={'10%'}>
-                      S/N
-                    </td>
-
-                    <td width={'26.6%'}>
-                      Reference No
-                    </td>
-
-                    <td width={'26.6%'}>
-                      Customer
-                    </td>
-
-                    <td width={'26.6%'}>
-                      Status
-                    </td>
-
-                    <td width={'10%'}>
-                      
-                    </td>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {
-                    state.generalState.invoices.map((e, index) => {
-                      return (
-                        <tr key={e._id.$oid} className='t-body-row'>
-                          <td width={'10%'}>
-                            {index + 1}
-                          </td>
-
-                          <td width={'26.6%'}>
-                            {'20220122-001'}
-                          </td>
-
-                          <td width={'26.6%'}>
-                            {'A user'}
-                          </td>
-
-                          <td width={'26.6%'}>
-                            <span className='px-3 font-medium' style={{
-                              borderRadius: 12,
-                              fontStyle: 'italic',
-                              background: e.paid ? '#3abf38' : '#FFA500',
-                              paddingTop: '0.1rem',
-                              paddingBottom: '0.1rem'
-                            }}>
-                              {e.paid ? 'Paid' : 'Pending'}
-                            </span>
-                          </td>
-
-                          <td width={'10%'} align='center'>
-                            <i className="bi bi-three-dots-vertical"></i>
-                          </td>
-                        </tr>
-                      )
-                    })
-                  }
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className='flex flex-col gap-3' style={{ flex: '1 0 100%', }}>
-            <h4 className='text-lg font-bold'>
               Products
             </h4>
             <div className='bg-primary p-5' style={{ borderRadius: 12 }}>
@@ -249,12 +178,8 @@ export default function Dashboard() {
                       Name
                     </td>
 
-                    <td width={'20%'}>
+                    <td width={'40%'}>
                       Description
-                    </td>
-
-                    <td width={'20%'}>
-                      Date Created
                     </td>
 
                     <td width={'20%'}>
@@ -280,8 +205,75 @@ export default function Dashboard() {
                             {e.itemName}
                           </td>
 
-                          <td width={'20%'}>
+                          <td width={'40%'}>
                             {e.description}
+                          </td>
+
+                          <td width={'20%'}>
+                            ${e.price.toLocaleString()}
+                          </td>
+
+                          <td width={'10%'} align='center'>
+                            <i className="bi bi-three-dots-vertical"></i>
+                          </td>
+                        </tr>
+                      )
+                    })
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className='flex flex-col gap-3' style={{ flex: '1 0 100%', }}>
+            <h4 className='text-lg font-bold'>
+              Invoices
+            </h4>
+            <div className='bg-primary p-5' style={{ borderRadius: 12 }}>
+              <table>
+                <thead>
+                  <tr className='t-head-row'>
+                    <td width={'10%'}>
+                      S/N
+                    </td>
+
+                    <td width={'20%'}>
+                      Reference No
+                    </td>
+
+                    <td width={'20%'}>
+                      Customer
+                    </td>
+
+                    <td width={'20%'}>
+                      Date Created
+                    </td>
+
+                    <td width={'20%'}>
+                      Status
+                    </td>
+
+                    <td width={'10%'}>
+                      
+                    </td>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {
+                    state.generalState.invoices.map((e, index) => {
+                      return (
+                        <tr key={e._id.$oid} className='t-body-row'>
+                          <td width={'10%'}>
+                            {index + 1}
+                          </td>
+
+                          <td width={'20%'}>
+                            {'20220122-001'}
+                          </td>
+
+                          <td width={'20%'}>
+                            {'A user'}
                           </td>
 
                           <td width={'20%'}>
@@ -295,7 +287,15 @@ export default function Dashboard() {
                           </td>
 
                           <td width={'20%'}>
-                            ${e.price.toLocaleString()}
+                            <span className='px-3 font-medium' style={{
+                              borderRadius: 12,
+                              fontStyle: 'italic',
+                              background: e.paid ? '#3abf38' : '#FFA500',
+                              paddingTop: '0.1rem',
+                              paddingBottom: '0.1rem'
+                            }}>
+                              {e.paid ? 'Paid' : 'Pending'}
+                            </span>
                           </td>
 
                           <td width={'10%'} align='center'>

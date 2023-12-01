@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const generalStateSlice = createSlice({
     name: 'generalState',
     initialState: {
-        sysLevel: 'sign-up',
+        sysLevel: 'login',
         invoices: [],
         products: []
     },
