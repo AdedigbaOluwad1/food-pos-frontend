@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { stateValue } from '@/data/data'
 import { updateUserLevel } from '@/store/general-app-state'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 export default function Login() {
     const state = useSelector(({ generalState }: { generalState: stateValue }) => generalState)
     const dispatch = useDispatch()
+    const router = useRouter()
     const [formState, setFormState] = useState({
         email: '',
         password: ''
@@ -19,6 +21,7 @@ export default function Login() {
 
         if(levelValue === 'login'){
             const res = axios.post('')
+            router.push('/dashboard')
         }
     }
   return (

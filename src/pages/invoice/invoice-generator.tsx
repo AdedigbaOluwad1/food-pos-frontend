@@ -108,7 +108,7 @@ function Invoice() {
         </div>
       </div>
 
-      <div className='flex flex-col min-h-full lg:w-6/12 py-24 md:px-8 px-6 items-center justify-center'>
+      <div className='flex flex-col bg-light min-h-full lg:w-6/12 py-24 md:px-8 px-6 items-center justify-center'>
         <form onSubmit={(e) => submit(e)} className='flex flex-col gap-6 w-full md:w-8/12 lg:w-11/12 lg:max-w-lg'>
             <Input title='Email' type='email' placeholder='Enter your email' />
             <Input title='Phone number' type='number' placeholder='Enter your phone number' />

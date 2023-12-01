@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import axios from 'axios'
 import DashboardLayout from '@/layouts/dashboard-layout'
 import DashboardCards from '@/components/dashboard-cards'
@@ -9,8 +9,56 @@ import dollar from '@/assets/dollar-square.svg'
 import product from '@/assets/tag.svg'
 import totalInvoices from '@/assets/bitcoin-card.svg'
 import { dummyUsers, dummyInvoice } from '@/data/data-store'
+import useGetInvoice from '@/hooks/useGetInvoices'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateProducts, updateInvoices } from '@/store/general-app-state'
+import useGetProducts from '@/hooks/useGetProducts'
+import { IGetInvoicesRes, IInvoiceObject, IProductObject, state } from '@/data/data'
+
+// export async function getServerSideProps(){
+//   try {
+//     const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/products') 
+//     const data = await res.json()
+//     return { 
+//       props: { 
+//         data
+//       }
+//     }
+//   } catch (e) {
+//     return {
+//       props: {
+//         e
+//       }
+//     }
+//   }
+// }
 
 export default function Dashboard() {
+  const dispatch = useDispatch()
+  const productApiRes = useGetProducts()
+  const invoiceApiRes = useGetInvoice( '', '', '')
+  const state = useSelector((e: state) => e)
+  
+  // dispatch the response of the updateProductState hook to redux
+  const updateProductsState = (e: IProductObject[]) => {
+    dispatch(updateProducts(e))
+  }
+   // dispatch the response of the updateInvoice hook to redux
+  const updateInvoiceState = (e: IInvoiceObject[]) => {
+    dispatch(updateInvoices(e))
+  }
+
+  // get the response of the api call from the hook, performing in useEffect to minimize no of renders
+  useEffect(() => {
+    productApiRes.then((e: { data: IProductObject[]}) => {
+      updateProductsState(e.data)
+    })
+
+    invoiceApiRes.then((e: IInvoiceObject[]) => {
+      updateInvoiceState(e)
+    })
+  }, [])
+
   return (
     <DashboardLayout>
       <div className='w-full gap-6 flex flex-col'>
@@ -126,15 +174,15 @@ export default function Dashboard() {
                       S/N
                     </td>
 
-                    <td width={'30%'}>
+                    <td width={'26.6%'}>
                       Reference No
                     </td>
 
-                    <td width={'40%'}>
+                    <td width={'26.6%'}>
                       Customer
                     </td>
 
-                    <td width={'10%'}>
+                    <td width={'26.6%'}>
                       Status
                     </td>
 
@@ -146,27 +194,30 @@ export default function Dashboard() {
 
                 <tbody>
                   {
-                    dummyInvoice.map((e, index) => {
+                    state.generalState.invoices.map((e, index) => {
                       return (
-                        <tr key={e.refNo} className='t-body-row'>
+                        <tr key={e._id.$oid} className='t-body-row'>
                           <td width={'10%'}>
                             {index + 1}
                           </td>
 
-                          <td width={'30%'}>
-                            {e.refNo}
+                          <td width={'26.6%'}>
+                            {'20220122-001'}
                           </td>
 
-                          <td width={'40%'}>
-                            {e.userName}
+                          <td width={'26.6%'}>
+                            {'A user'}
                           </td>
 
-                          <td width={'10%'}>
-                            <span className='bg-success px-3' style={{
-                              borderRadius: 8,
-                              fontStyle: 'italic'
+                          <td width={'26.6%'}>
+                            <span className='px-3 font-medium' style={{
+                              borderRadius: 12,
+                              fontStyle: 'italic',
+                              background: e.paid ? '#3abf38' : '#FFA500',
+                              paddingTop: '0.1rem',
+                              paddingBottom: '0.1rem'
                             }}>
-                              {e.status}
+                              {e.paid ? 'Paid' : 'Pending'}
                             </span>
                           </td>
 
@@ -184,7 +235,7 @@ export default function Dashboard() {
 
           <div className='flex flex-col gap-3' style={{ flex: '1 0 100%', }}>
             <h4 className='text-lg font-bold'>
-              Invoices
+              Products
             </h4>
             <div className='bg-primary p-5' style={{ borderRadius: 12 }}>
               <table>
@@ -194,16 +245,20 @@ export default function Dashboard() {
                       S/N
                     </td>
 
-                    <td width={'30%'}>
-                      Reference No
+                    <td width={'20%'}>
+                      Name
                     </td>
 
-                    <td width={'40%'}>
-                      Customer
+                    <td width={'20%'}>
+                      Description
                     </td>
 
-                    <td width={'10%'}>
-                      Status
+                    <td width={'20%'}>
+                      Date Created
+                    </td>
+
+                    <td width={'20%'}>
+                      Price
                     </td>
 
                     <td width={'10%'}>
@@ -214,28 +269,33 @@ export default function Dashboard() {
 
                 <tbody>
                   {
-                    dummyInvoice.map((e, index) => {
+                    state.generalState.products.map((e, index) => {
                       return (
-                        <tr key={e.refNo} className='t-body-row'>
+                        <tr key={e._id.$oid} className='t-body-row'>
                           <td width={'10%'}>
                             {index + 1}
                           </td>
 
-                          <td width={'30%'}>
-                            {e.refNo}
+                          <td width={'20%'}>
+                            {e.itemName}
                           </td>
 
-                          <td width={'40%'}>
-                            {e.userName}
+                          <td width={'20%'}>
+                            {e.description}
                           </td>
 
-                          <td width={'10%'}>
-                            <span className='bg-success px-3' style={{
-                              borderRadius: 8,
-                              fontStyle: 'italic'
-                            }}>
-                              {e.status}
-                            </span>
+                          <td width={'20%'}>
+                            {
+                              new Date(e.created_at.$date).toLocaleDateString('en-us', {
+                                day: '2-digit',
+                                month: 'short',
+                                year: 'numeric'
+                              })
+                            }
+                          </td>
+
+                          <td width={'20%'}>
+                            ${e.price.toLocaleString()}
                           </td>
 
                           <td width={'10%'} align='center'>
@@ -254,10 +314,3 @@ export default function Dashboard() {
     </DashboardLayout>
   )
 }
-
-// export async function getServerSideProps(){
-//   const res = await axios.post('')
-//   const data = await res.data
-
-//   return { props: { data }}
-// }

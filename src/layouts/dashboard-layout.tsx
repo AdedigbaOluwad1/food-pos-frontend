@@ -6,9 +6,9 @@ export default function DashboardLayout({ children }: { children: any }) {
     <div className='flex h-screen'>
         <SideBar />
       <div className='w-full bg-primary' style={{
-        marginLeft: '22rem'
+        marginLeft: '20rem'
       }}>
-        <div className='w-full min-h-full' style={{
+        <div className='w-full min-h-screen' style={{
           background: 'rgba(255, 255, 255, 0.04)',
           backdropFilter: 'blur(4px)',
           padding: '2rem'

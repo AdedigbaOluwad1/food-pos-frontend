@@ -12,7 +12,7 @@ export default function SideBar() {
   return (
     <div className='min-h-screen flex flex-col bg-primary' style={{
       gap: '2.75rem',
-      width: '22rem',
+      width: '20rem',
       padding: '1.5rem',
       position: 'fixed',
       zIndex: 10
