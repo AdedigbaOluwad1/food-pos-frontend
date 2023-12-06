@@ -39,7 +39,7 @@ export default function SideBar() {
         {
           navigation.map(eachLink => {
             return (
-              <Link href={''} key={eachLink.name} onClick={() => setActiveLink(eachLink)} className={`transition-all nav-links gap-4 flex items-center text-base ${activeLink === eachLink ? 'active-navlink' : null }`}>
+              <Link href={eachLink.path} key={eachLink.name} onClick={() => setActiveLink(eachLink)} className={`transition-all nav-links gap-4 flex items-center text-base ${activeLink === eachLink ? 'active-navlink' : null }`}>
                 <i className={`${eachLink.icon}`} style={{ fontSize: '1.25rem', lineHeight: 0}}></i>
                 {eachLink.name}
               </Link>

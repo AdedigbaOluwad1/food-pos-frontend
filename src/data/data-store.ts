@@ -9,7 +9,7 @@ export const navigation: navLink[] = [
     { 
         name: 'Invoices',
         icon: 'bi bi-coin',
-        path: '/dashboard'
+        path: '/invoice'
     },
     { 
         name: 'Notifications',
