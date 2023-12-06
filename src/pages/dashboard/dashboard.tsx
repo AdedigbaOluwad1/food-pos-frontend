@@ -6,6 +6,7 @@ import useGetProducts from '@/hooks/useGetProducts'
 import Heading from '@/components/dashboard-components/heading'
 import SearchBar from '@/components/dashboard-components/searchbar'
 import SidebarMini from '@/components/dashboard-components/sidebar-mini'
+import Tabs from '@/components/dashboard-components/tabs'
 
 export default function Dashboard() {
   const dispatch = useDispatch()
@@ -43,6 +44,29 @@ export default function Dashboard() {
 
             <SearchBar />
           </div>
+          <Tabs 
+            tabOptions={
+              [ 
+                {
+                  tabName: 'Hot Dishes', 
+                  tabValue: 1
+                },
+                {
+                  tabName: 'Cold Dishes', 
+                  tabValue: 2
+                },
+                {
+                  tabName: 'Appetizers', 
+                  tabValue: 3
+                },
+                {
+                  tabName: 'Dessert', 
+                  tabValue: 4
+                }
+              ]
+            } 
+            onChange={(e) => console.log(e) } 
+          />
         </div>
 
         <SidebarMini />

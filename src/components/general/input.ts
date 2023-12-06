@@ -8,7 +8,8 @@ const Input = styled(TextField)(() => ({
         color: '#ABBBC2',
         fontSize: '0.875rem',
         marginTop: 0,
-        background: 'transparent',
+        background: '#2D303E',
+        borderRadius: '8px',
         fontFamily: 'inter',
         '& fieldset': {
           border: '1px solid #393C49',

@@ -8,8 +8,10 @@ export default function SidebarMini() {
         className='bg-primary flex gap-6 flex-col'
         style={{
             width: '34.25%',
+            minWidth: 350,
             margin: '-1.5rem -1.5rem -1.5rem 0',
-            padding: '1.5rem'
+            padding: '1.5rem',
+            borderRadius: '8px 0 0 8px'
         }}
     >
         <h4 className='text-xl font-semibold'>
@@ -61,23 +63,75 @@ export default function SidebarMini() {
                 borderBottom: '1px solid #393C49'
             }}
         >
-           <h4 className='w-full font-semibold'>
-                Item
-            </h4> 
+           <div className='flex items-center w-full'>
+                <h4 className='text-base font-semibold'>
+                    Item
+                </h4> 
 
-            <h4 className=' w-12 font-semibold'>
-                Qty
-            </h4> 
+                <h4 className='text-base font-semibold' style={{
+                    marginLeft: 'auto',
+                    width: 40,
+                    textAlign: 'center'
+                }}>
+                    Qty
+                </h4> 
+            </div>
 
-            <h4 className='w-12 font-semibold'>
-                Price
-            </h4> 
+            <div
+                className='flex items-center justify-center'
+                style={{
+                    width: '20%'
+                }}
+            >
+                <h4 className='text-base font-semibold'>
+                    Price
+                </h4> 
+            </div>
+            
         </div>
 
-        <div>
+        <div className='w-full flex flex-col gap-6 relative'>
+            <Item />
+            <Item />
             <Item />
         </div>
         
+        <div
+            className='flex flex-col gap-4'
+            style={{
+                marginTop: 'auto'
+            }}
+        >
+            <div className='flex items-center justify-between'>
+                <p className='text-sm text-[#ABBBC2]'>
+                    Discount
+                </p>
+                <p className='text-sm text-light'>
+                    $0
+                </p>
+            </div>
+
+            <div className='flex items-center justify-between'>
+                <p className='text-sm text-[#ABBBC2]'>
+                    Sub total
+                </p>
+                <p className='text-sm text-light'>
+                    $20,003
+                </p>
+            </div>
+            <Button 
+                className='h-12 mt-[1.625rem] w-full text-sm font-semibold normal-case'
+                variant='contained'
+                disableElevation
+                sx={{
+                    background: '#EA7C69 !important',
+                    boxShadow: '0px 8px 24px 0px rgba(234, 124, 105, 0.30)',
+                    borderRadius: '8px'
+                }}
+            >
+                Continue to Payment
+            </Button>
+        </div>
     </div>
   )
 }
