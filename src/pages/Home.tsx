@@ -2,7 +2,7 @@ import {
   useEffect,
   useState
 } from 'react'
-import Logo from '@/assets/Logo.png'
+// import Logo from '@/assets/Logo.png'
 import Image from 'next/image'
 
 export default function Home() {
@@ -13,7 +13,6 @@ export default function Home() {
       }}>
         <div className='w-11/12 max-w-[100rem] flex items-center justify-between'>
           <div className='flex gap-3 items-center'>
-            <Image src={Logo} alt='Logo' />
             <h3 className='text-xl font-bold'>
               Shopify
             </h3>

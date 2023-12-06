@@ -5,11 +5,11 @@ export default function DashboardLayout({ children }: { children: any }) {
   return (
     <div className='flex h-screen'>
         <SideBar />
-      <div className='w-full bg-primary' style={{
-        marginLeft: '20rem'
+      <div className='w-full' style={{
+        marginLeft: '6.5rem'
       }}>
         <div className='w-full min-h-screen' style={{
-          background: 'rgba(255, 255, 255, 0.04)',
+          background: '#fff',
           backdropFilter: 'blur(4px)',
           padding: '2rem'
         }}>
