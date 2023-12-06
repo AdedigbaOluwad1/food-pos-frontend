@@ -6,27 +6,32 @@ interface props {
     icon: string,
     activeIcon: string,
     active: boolean,
-    link: string
+    path: string,
+    name: string,
+    onClick: () => void
 }
 
 export default function SideBarLink(props: props) {
   return (
-    <div 
+    <div
+        onClick={() => props.onClick()} 
         className='flex items-center justify-center' 
         style={{
             height: '6.375rem',
             width: '5.75rem',
             position: 'relative',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            padding: 0
         }}
     >
         { props.active ? 
             <Image 
                 src={activeLinkBg} 
-                alt='bg-active' 
+                alt={props.name}
                 style={{
                     width: '100%',
-                    height: '100%'
+                    height: '100%',
+                    marginRight: '-0.17rem'
                 }} 
             /> 
                 :

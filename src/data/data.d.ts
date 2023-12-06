@@ -11,9 +11,10 @@ export interface stateValue {
 }
 
 export interface navLink {
-    name: string,
-    icon: string,
-    path: string
+  activeIcon: string,
+  icon: string,
+  path: string,
+  name: string,
 }
 
 export interface IGetInvoicesRes {

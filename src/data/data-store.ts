@@ -1,30 +1,53 @@
 import { navLink } from './data'
+import homeIcon from '@/assets/icons/home-icon.svg'
+import homeIconActive from '@/assets/icons/home-icon-active.svg'
+import discountIcon from '@/assets/icons/discount-icon.svg'
+import discountIconActive from '@/assets/icons/discount-icon-active.svg'
+import statsReport from '@/assets/icons/graph-icon.svg'
+import statsReportActive from '@/assets/icons/graph-icon-active.svg'
+import messageIcon from '@/assets/icons/message-icon.svg'
+import messageIconActive from '@/assets/icons/message-icon-active.svg'
+import notificationIcon from '@/assets/icons/notification-icon.svg'
+import notificationIconActive from '@/assets/icons/notification-icon-active.svg'
+import settingsIcon from '@/assets/icons/setting-icon.svg'
+import settingsIconActive from '@/assets/icons/setting-icon-active.svg'
 
-export const navigation: navLink[] = [
+export const navLinks: navLink[] = [
     { 
-        name: 'Dashboard',
-        icon: 'bi bi-house',
-        path: '/dashboard'
+        name: 'Home',
+        path: '/dashboard',
+        activeIcon: homeIconActive,
+        icon: homeIcon,
     },
     { 
-        name: 'Invoices',
-        icon: 'bi bi-coin',
-        path: '/invoice'
+        name: 'Discount',
+        path: '/discount',
+        activeIcon: discountIconActive,
+        icon: discountIcon,
+    },
+    { 
+        name: 'Report',
+        path: '/report',
+        activeIcon: statsReportActive,
+        icon: statsReport,
+    },
+    { 
+        name: 'Inbox',
+        path: '/inbox',
+        activeIcon: messageIconActive,
+        icon: messageIcon,
     },
     { 
         name: 'Notifications',
-        icon: 'bi bi-bell',
-        path: '/notifications'
+        path: '/notifications',
+        activeIcon: notificationIconActive,
+        icon: notificationIcon,
     },
     { 
-        name: 'Products',
-        icon: 'bi bi-tag',
-        path: '/dashboard'
-    },
-    { 
-        name: 'Customers',
-        icon: 'bi bi-people',
-        path: '/dashboard'
+        name: 'Settings',
+        path: '/settings',
+        activeIcon: settingsIconActive,
+        icon: settingsIcon,
     },
 ]
 
