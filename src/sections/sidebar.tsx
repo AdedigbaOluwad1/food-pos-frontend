@@ -14,11 +14,10 @@ export default function SideBar() {
       className='min-h-screen flex items-center flex-col bg-primary' 
       style={{
         gap: '1rem',
-        position: 'fixed',
         zIndex: 10,
         paddingTop: '1.5rem',
         paddingBottom: '1.5rem',
-        width: '6.5rem',
+        width: 'full',
         borderRadius: '0 1rem 1rem 0'
       }}
     >

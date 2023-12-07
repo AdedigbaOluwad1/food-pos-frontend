@@ -11,14 +11,16 @@ interface props {
 }
 
 export default function Tabs(props: props) {
-    const [activeTab, setActiveTab] = useState<tabOptions>()
+    const [activeTab, setActiveTab] = useState<tabOptions>(props.tabOptions[0])
 
     useEffect(() => {
         props.onChange(activeTab?.tabValue)
-    }, [activeTab])
+    }, [activeTab, props])
 
   return (
-    <div className='h-9 flex items-center gap-8 border-b border-[#393C49]'>
+    <div className='h-9 flex items-center gap-8 border-b border-[#393C49]' style={{
+        height: '2.25rem'
+    }}>
       { props.tabOptions.map((e) => {
             return (
                 <div 

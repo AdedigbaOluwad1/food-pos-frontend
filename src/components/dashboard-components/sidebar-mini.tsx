@@ -1,17 +1,15 @@
 import React from 'react'
 import { Button } from '@mui/material'
 import Item from './item'
-
+import ConfirmationSlide from './confirmation-slide'
 export default function SidebarMini() {
   return (
     <div 
-        className='bg-primary flex gap-6 flex-col'
+        className='bg-primary h-full flex gap-6 flex-col'
         style={{
-            width: '34.25%',
-            minWidth: 350,
-            margin: '-1.5rem -1.5rem -1.5rem 0',
             padding: '1.5rem',
-            borderRadius: '8px 0 0 8px'
+            borderRadius: '8px 0 0 8px',
+            gridRow: 1
         }}
     >
         <h4 className='text-xl font-semibold'>
@@ -131,6 +129,8 @@ export default function SidebarMini() {
             >
                 Continue to Payment
             </Button>
+
+            <ConfirmationSlide />
         </div>
     </div>
   )
