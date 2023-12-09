@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '@mui/material'
 import Item from './item'
 import ConfirmationSlide from './confirmation-slide'
+
 export default function SidebarMini() {
+    const [confirmationSlide, setConfirmationSlide] = useState(false)
   return (
     <div 
         className='bg-primary h-full flex gap-6 flex-col'
@@ -121,6 +123,7 @@ export default function SidebarMini() {
                 className='h-12 mt-[1.625rem] w-full text-sm font-semibold normal-case'
                 variant='contained'
                 disableElevation
+                onClick={() => setConfirmationSlide(true)}
                 sx={{
                     background: '#EA7C69 !important',
                     boxShadow: '0px 8px 24px 0px rgba(234, 124, 105, 0.30)',
@@ -130,7 +133,7 @@ export default function SidebarMini() {
                 Continue to Payment
             </Button>
 
-            <ConfirmationSlide />
+            <ConfirmationSlide onClose={(e) => setConfirmationSlide(e)} open={confirmationSlide} />
         </div>
     </div>
   )

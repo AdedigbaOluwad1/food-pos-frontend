@@ -2,16 +2,23 @@ import React from 'react'
 import chevronIcon from '@/assets/icons/chevron-down.svg'
 import Image from 'next/image'
 import DishItem from './dish-item'
+import Loader from '@/components/general/loader'
+import { useSelector } from 'react-redux'
+import { IState } from '@/data/data'
 
-export default function Dishes() {
+type props = {
+  loading: boolean
+}
+
+export default function Dishes(props: props) {
+  const state = useSelector((state: IState) => state.dashboardState)
+
   return (
     <div className='w-full grid gap-6 h-full' style={{
         gridTemplateColumns: '1fr',
-        gridTemplateRows: 'fit-content 1fr'
+        gridTemplateRows: 'auto 1fr'
     }}>
-      <div className='flex items-center justify-between' style={{
-        gridRow: 'fit-content'
-      }}>
+      <div className='flex items-center justify-between'>
         <p className='font-semibold text-xl'>
             Choose Dishes
         </p>
@@ -24,22 +31,24 @@ export default function Dishes() {
         </div>
       </div>
 
-      <div className='flex flex-wrap w-full flex-1 gap-x-7 gap-y-6 hide-scrollbar' style={{ 
+      <div className='flex flex-wrap w-full flex-1 gap-x-7 gap-y-7 hide-scrollbar justify-center' style={{ 
         overflowY: 'auto',
         maxHeight: '100%',
-        gridRow: '1fr',
         paddingBottom: '10rem'
       }}>
-        <DishItem />
-        <DishItem />
-        <DishItem />
-        <DishItem />
-        <DishItem />
-        <DishItem />
-        <DishItem />
-        <DishItem />
-        <DishItem />
-        <DishItem />
+        {
+          props.loading ? 
+            <Loader />
+              : 
+            <>
+            {
+              state.dishes.map((e) => {
+                return <DishItem dish={e} key={e._id} />
+              })
+            }
+          </>
+        }
+        
       </div>
     </div>
   )

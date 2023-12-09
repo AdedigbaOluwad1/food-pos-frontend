@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Input from '@/components/input'
 import { useSelector, useDispatch } from 'react-redux'
 import { stateValue } from '@/data/data'
-import { updateUserLevel } from '@/store/general-app-state'
+import { updateUserLevel } from '@/store/appReducer'
 import toast from 'react-hot-toast'
 import axios from 'axios'
 

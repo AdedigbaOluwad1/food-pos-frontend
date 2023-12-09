@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Input from '@/components/input'
 import { useSelector, useDispatch } from 'react-redux'
 import { stateValue } from '@/data/data'
-import { updateUserLevel } from '@/store/general-app-state'
+import { updateUserLevel } from '@/store/appReducer'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 

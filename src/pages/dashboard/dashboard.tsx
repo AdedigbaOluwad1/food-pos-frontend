@@ -2,18 +2,21 @@ import React from 'react'
 import DashboardLayout from '@/layouts/dashboard-layout'
 import useGetInvoice from '@/hooks/useGetInvoices'
 import { useSelector, useDispatch } from 'react-redux'
-import useGetProducts from '@/hooks/useGetProducts'
 import Heading from '@/components/dashboard-components/heading'
 import SearchBar from '@/components/dashboard-components/searchbar'
 import SidebarMini from '@/components/dashboard-components/sidebar-mini'
 import Tabs from '@/components/dashboard-components/tabs'
 import Dishes from '@/components/dashboard-components/dishes'
+import useGetDishes from '@/hooks/api/useGetDishes'
+import { updateSelectedDishCategory } from '@/store/dashboardReducer'
 
 export default function Dashboard() {
-  // const dispatch = useDispatch()
-  // const productApiRes = useGetProducts()
-  // const invoiceApiRes = useGetInvoice( '', '', '')
-  // const state = useSelector((e) => e)
+  const dispatch = useDispatch()
+  const { loading } = useGetDishes()
+
+  const handleDishCategoryChange = (e: string | undefined) => {
+    dispatch(updateSelectedDishCategory(e))
+  }
 
   return (
     <DashboardLayout>
@@ -87,11 +90,11 @@ export default function Dashboard() {
                   }
                 ]
               } 
-              onChange={(e) => console.log(e) } 
+              onChange={(e) => handleDishCategoryChange(e)} 
             />  
           </div>
 
-          <Dishes />
+          <Dishes loading={loading} />
         </div>
 
         <SidebarMini />

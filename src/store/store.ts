@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import chatReducer from "./chatReducer";
-import generalAppState from "./general-app-state";
+import dashboardReducer from "./dashboardReducer";
+import appReducer from "./appReducer";
 
 const store = configureStore({
     reducer: {
-        // chat: chatReducer,
-        generalState: generalAppState
+        appState: appReducer,
+        dashboardState: dashboardReducer
     }
 })
 

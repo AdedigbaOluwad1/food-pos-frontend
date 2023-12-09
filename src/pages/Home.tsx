@@ -4,8 +4,21 @@ import {
 } from 'react'
 // import Logo from '@/assets/Logo.png'
 import Image from 'next/image'
+import axios from 'axios'
 
 export default function Home() {
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/products')
+    .then((e) => {
+      console.log(e.data)
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+  }, [])
+
+  const state = 0
   return (
     <div className='min-h-screen flex flex-col'>
       <div className='h-20 flex items-center justify-center' style={{
@@ -52,6 +65,11 @@ export default function Home() {
             Sign Up
           </button>
         </div>
+      </div>
+
+      <div>
+        <p>{state}</p>
+        <button onClick={() => state + 1}> increase </button>
       </div>
     </div>
   )

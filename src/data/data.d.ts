@@ -1,13 +1,17 @@
 import { StaticImageData } from "next/image"
 
-export interface state {
-    generalState: stateValue
+export type IState = {
+  generalState: IStateValue,
+  dashboardState: IDashboardState
 }
 
-export interface stateValue {
-    sysLevel: 'sign-up' | 'login' | '',
-    invoices: IInvoiceObject[],
-    products: IProductObject[]
+export type IAppState = {
+  isAuthenticated: boolean
+}
+
+export type IDashboardState = {
+  selectedDishCategory: string,
+  dishes: IDishes[]
 }
 
 export interface navLink {
@@ -27,6 +31,17 @@ export interface IProductObject {
     itemName: string
     price: number
     description: string
+}
+
+export interface IDishes {
+  _id: string
+  name: string
+  quantity: number
+  price: number
+  image: string
+  createdAt: string
+  updatedAt: string
+  __v: number
 }
 
 export interface Id {

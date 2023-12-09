@@ -7,7 +7,7 @@ import Image from 'next/image'
 import logoutIcon from '@/assets/icons/logout-icon.svg'
 
 export default function SideBar() {
-  const [activeLink, setActiveLink] = useState<navLink>()
+  const [activeLink, setActiveLink] = useState<navLink>(navLinks[0])
 
   return (
     <div 

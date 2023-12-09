@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { IState } from '@/data/data'
 
 interface tabOptions {
     tabValue: number,
@@ -7,15 +9,15 @@ interface tabOptions {
 
 interface props {
     tabOptions: tabOptions[]
-    onChange: (param: number | undefined) => void
+    onChange: (param: string | undefined) => void
 }
 
 export default function Tabs(props: props) {
-    const [activeTab, setActiveTab] = useState<tabOptions>(props.tabOptions[0])
+    const activeTab = useSelector((state: IState) => state.dashboardState.selectedDishCategory)
 
-    useEffect(() => {
-        props.onChange(activeTab?.tabValue)
-    }, [activeTab, props])
+    const handleTabChange = (e: string) => {
+        props.onChange(e)
+    }
 
   return (
     <div className='h-9 flex items-center gap-8 border-b border-[#393C49]' style={{
@@ -26,12 +28,12 @@ export default function Tabs(props: props) {
                 <div 
                     className='h-full flex flex-col justify-between cursor-pointer' 
                     key={e.tabName} 
-                    onClick={() => setActiveTab(e)}
+                    onClick={() => handleTabChange(e.tabName)}
                 >
-                    <p className={`text-sm transition-all select-none font-semibold ${activeTab === e ? 'text-secondary' : ''}`}>
+                    <p className={`text-sm transition-all select-none font-semibold ${activeTab === e.tabName ? 'text-secondary' : ''}`}>
                         {e.tabName}
                     </p>
-                    { activeTab === e ?
+                    { activeTab === e.tabName ?
                         <div 
                             className='bg-secondary transition-all' 
                             style={{

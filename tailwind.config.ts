@@ -19,7 +19,11 @@ const config: Config = {
       'grey-text': '#3E3E3E',
       'border-color': '#E3E8EF',
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        '2xl': '0px 8px 24px 0px rgba(234, 124, 105, 0.40)'
+      }
+    },
     screens: {
       'sm': '640px',
       'md': '768px',
