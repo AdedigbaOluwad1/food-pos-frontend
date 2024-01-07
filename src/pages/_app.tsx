@@ -8,8 +8,8 @@ import { Toaster } from 'react-hot-toast'
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <Toaster position='bottom-left' toastOptions={{
-        className: 'min-w-[280px] h-[3.5rem] bg-secondary text-light flex',
+      <Toaster position='top-right' toastOptions={{
+        className: 'min-w-[280px] h-[3.5rem] mt-3 mr-3 bg-secondary text-light flex',
         style: {
           background: '#EA7C69',
           color: '#fff'
